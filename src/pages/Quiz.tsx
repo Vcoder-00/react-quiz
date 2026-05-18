@@ -1,24 +1,29 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { defaultQuizData, type Question } from '../data/quizData'
 import LogoQuiz from '../assets/Logo-Quiz.svg'
 
 export default function Quiz() {
-  const [questions] = useState<Question[]>(() => {
+  const [questions, setQuestions] = useState<Question[]>([])
+  
+  useEffect(() => {
     const savedQuestions = localStorage.getItem('@quiz_questions')
     if (savedQuestions) {
       try {
         const parsed = JSON.parse(savedQuestions)
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed
+          setQuestions(parsed)
+          return
         }
       } catch (e) {
         console.error('Error parsing questions from localStorage', e)
       }
     }
-    return defaultQuizData
-  })
+    setQuestions(defaultQuizData)
+  }, [])
+
   const [currentIndex, setCurrentIndex] = useState(0)
+
   const [correctAnswers, setCorrectAnswers] = useState(0)
   const [incorrectAnswers, setIncorrectAnswers] = useState(0)
   const navigate = useNavigate()
