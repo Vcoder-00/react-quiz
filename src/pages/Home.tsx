@@ -27,6 +27,15 @@ export default function Home() {
       >
         Começar
       </button>
+
+      <button
+        onClick={() => navigate('/admin')}
+        className="mt-4 border-2 border-quiz-purple text-white w-full max-w-xs py-3 rounded-full text-lg font-bold hover:bg-quiz-purple transition-all"
+      >
+        Gerenciar Questões
+      </button>
     </div>
+
+
   )
 }
