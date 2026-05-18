@@ -1,73 +1,47 @@
-# React + TypeScript + Vite
+# React Quiz App 🧠
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação interativa de Quiz desenvolvida em React, focada em fidelidade de design (UI/UX), gerenciamento dinâmico de estado entre rotas e persistência de dados local.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Tecnologias Utilizadas
 
-## React Compiler
+*   **React** (com TypeScript)
+*   **React Router DOM** (Gerenciamento de rotas e histórico)
+*   **Tailwind CSS** (Estilização baseada no guia visual)
+*   **Vite** (Ambiente de desenvolvimento rápido)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🎯 Requisitos Implementados
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 1. Fidelidade ao Design (UI/UX)
+*   **Guia Visual:** Interface totalmente adaptada e ajustada seguindo os padrões definidos no protótipo do Figma.
+*   **Tema Personalizado:** Consistência visual utilizando estritamente as cores de identidade da aplicação em todos os componentes:
+    *   `quiz-purple`
+    *   `quiz-yellow`
+    *   `quiz-dark`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 2. Gerenciamento de Rotas e Estado Dinâmico
+*   **Fluxo de Dados:** Ao responder a última pergunta na tela de Quiz, os dados de desempenho são consolidados e enviados para a rota `/resultado` de forma segura através do objeto `state` da função `navigate`.
+*   **Consumo de Estado:** A tela de resultados extrai as informações do hook `useLocation().state` para exibir:
+    *   Quantidade total de acertos.
+    *   Quantidade total de erros.
+*   **Feedback ao Usuário:** Exibição de uma mensagem motivacional dinâmica gerada com base na porcentagem de aproveitamento do aluno.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 3. Persistência com LocalStorage
+*   **Dados Dinâmicos:** Substituição de dados estáticos (mockados) por um fluxo de leitura dinâmico.
+*   **Ciclo de Vida:** Utilização do hook `useEffect` na tela de Quiz para buscar as questões armazenadas no navegador sob a chave `@quiz_questions` logo no carregamento da página.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/Vcoder-00/react-quiz.git](https://github.com/Vcoder-00/react-quiz.git)
+   cd react-quiz
+1. Instale as dependências:
+   ```bash
+   npm install
+1. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
